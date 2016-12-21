@@ -1,9 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% this is the master, I think
 % Using Linux Tools
 %
 % Author: FOSSEE 
 % Copyright (c) 2009, FOSSEE, IIT Bombay
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% some changes are being done by Madhu on 4th Jan 2015 (to the version
+% he downloaded from git.fossee (some mirror Srikant told a few days ago).
 
 \documentclass[12pt,compress]{beamer}
 
@@ -52,9 +55,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Title page
-\title[Using Linux Tools]{SEES: Using Linux Tools}
+\title[Using Linux Tools]{Software Development in Engineering and Science (SDES)\\ Using Linux Tools}
 
-\author[FOSSEE] {FOSSEE}
+\author[FOSSEE] {FOSSEE team\\
+(In particular: Puneet Chaganti, C. Madhusudan, Asokan Pichai, 2010)}
 
 \institute[IIT Bombay] {Department of Aerospace Engineering\\IIT Bombay}
 \date[]{}
@@ -104,7 +108,7 @@
     \item Free Open Source Operating System
       \begin{description}
         \item[Free] 
-          Free as in Free Speech, not Free Beer
+          Free as in Free Speech, \alert{not} Free Beer
         \item[Open-Source]
           Permit modifications and redistribution of source code
       \end{description}
@@ -119,7 +123,7 @@
 \begin{frame}[fragile]
   \frametitle{Why Linux?}
     \begin{itemize}
-    \item Free as in Free Beer
+    \item Free as in Free Speech
     \item Secure \& versatile
     \end{itemize}
 
@@ -139,7 +143,8 @@
   \begin{itemize}
   \item GNU/Linux does have a GUI
   \item Command Line for this module
-  \item Hit \texttt{Ctrl + Alt + F1}
+  \item Hit \texttt{Ctrl + Alt + F1} (learn how to {\em come out} of that {\em first}!)\\
+         (Please note: this is keyboard dependent, and GNU/Linux distribution specific.)
   \item Login 
   \item \texttt{logout} command logs you out
   \end{itemize}
@@ -148,13 +153,24 @@
 \begin{frame}[fragile]
   \frametitle{Where am I?}
   \begin{itemize}
-  \item Logged in. Where are we?
+  \item Logged in. Where did we reach? 
   \item \texttt{pwd} command gives the present working directory
   \end{itemize} 
   \begin{lstlisting}
     $ pwd
     /home/user
   \end{lstlisting} % $
+  Think of a tree rooted at `/'
+  \begin{lstlisting}
+    $ 
+  \end{lstlisting} % $
+  is called the `bash prompt' (or shell prompt).\\
+  Type \verb|command argument| at the prompt \verb|$  |: i.e.\\
+   \verb|$  command argument| \\
+  You can change the prompt \verb|$ | (bash syntax: \$PS1).\\
+  Some commands do not need an argument.\\
+  Almost all commands can be provided with additional options: \verb|$ command -o1 -o2 arguments| \\
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -174,7 +190,11 @@
     one.mp3 two.mp3 three.mp3
   \end{lstlisting} %$
   \begin{itemize}
-  \item   \alert{the Unix world is case sensitive}
+  \item   \alert{The GNU/Linux world is case sensitive.}\\
+      Commands, arguments, directory names: almost all.\\
+      There is a space between command, options, arguments: some options can be combined.\\
+      \alert{Avoid spaces in general. In SDES course: spaces (and some more characters) 
+            are banned (from filenames)!}
   \end{itemize}
 \end{frame}
 
@@ -184,7 +204,7 @@
   \item \texttt{mkdir} creates new directories
   \end{itemize}
   \begin{lstlisting}
-    $ mkdir sees
+    $ mkdir sdes
     $ ls
   \end{lstlisting}
   \begin{itemize}
@@ -205,14 +225,14 @@
   \item \texttt{cd} command changes the \texttt{pwd}
   \end{itemize}
   \begin{lstlisting}
-    $ cd sees
+    $ cd sdes
     $ pwd 
-    /home/user/sees/
+    /home/user/sdes/
   \end{lstlisting}
   \begin{itemize}
-  \item Alternately written as \texttt{cd ./sees}
+  \item Alternately written as \texttt{cd ./sdes} (\texttt{.} : current)
   \item Specifying path relative to \texttt{pwd}
-  \item \texttt{..} takes one level up the directory structure
+  \item \texttt{..} takes one level \alert{up} the directory structure (\texttt{..} : `parent')
   \end{itemize}
   \begin{lstlisting}
     $ cd ..
@@ -221,7 +241,7 @@
   \item We could use absolute path instead of relative
   \end{itemize}
   \begin{lstlisting}
-    $ cd /home/user/sees/
+    $ cd /home/user/sdes/
   \end{lstlisting} % $
 \end{frame}
 
@@ -233,7 +253,7 @@
   \begin{lstlisting}
     $ pwd
     /home/user
-    $ cd sees
+    $ cd sdes
     $ touch first
     $ ls 
     first
@@ -259,12 +279,13 @@
   \end{lstlisting} % $
   \begin{itemize}
   \item Shows all tasks that the command can perform
-  \item Hit \texttt{q} to quit the \texttt{man} page
+  \item Hit \texttt{q} to quit the \texttt{man} page. (This is syntax of `less'.)
   \item For more, see the \texttt{man} page of \texttt{man}
-  \end{itemize}
   \begin{lstlisting}
     $ man man
   \end{lstlisting} % $
+  \item \texttt{less} is more than \texttt{more}.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -288,8 +309,8 @@
   \begin{lstlisting}
     $ pwd
     /home/user/
-    $ ls sees/
-    $ mkdir -p sees/linux-tools/scripts
+    $ ls sdes/
+    $ mkdir -p sdes/linux-tools/scripts
   \end{lstlisting} % $
 \end{frame}
 
@@ -369,8 +390,8 @@
   \end{itemize}
   
   \begin{lstlisting}
-    $ cp -i linux-tools/scripts/foo linux-tools/bar
-    cp: overwrite `bar'?
+  $ cp -i linux-tools/scripts/foo linux-tools/bar
+  cp: overwrite `bar'?
   \end{lstlisting} % $
 \end{frame}
 
@@ -385,7 +406,7 @@
 
   \begin{lstlisting}
     $ cd /home/user
-    $ cp -ir sees course
+    $ cp -ir sdes course
   \end{lstlisting}
 \end{frame}
 
@@ -400,9 +421,9 @@
   \end{itemize}
 
   \begin{lstlisting}
-    $ cd /home/user
-    # Assume we have course directory already created
-    $ mv -i sees/ course/
+  $ cd /home/user
+  # Assume course directory is already created
+  $ mv -i sdes/ course/
   \end{lstlisting}
   \begin{itemize}
   \item No prompt! Why?
@@ -411,7 +432,7 @@
     $ ls course
   \end{lstlisting} % $
   \begin{itemize}
-  \item \texttt{sees} became a sub-directory of \texttt{course} 
+  \item \texttt{sdes} became a sub-directory of \texttt{course} 
   \item \texttt{mv} command doesn't over-write directories
   \item \texttt{-i} option is useful when moving files around
   \item \texttt{mv} to rename --- move to same location with new name
@@ -437,7 +458,7 @@
   \end{itemize}
 
   \begin{lstlisting}
-    drwxr-xr-x   5 root users  4096 Jan 21 20:07 home
+  drwxr-xr-x 5 root users 4096 Jan 21 20:07 home
   \end{lstlisting} % $
 
   \begin{itemize}
@@ -471,20 +492,23 @@
 
 \begin{frame}[fragile]
   \frametitle{Symbolic modes}
+
+\noindent
   \begin{small}
+  \noindent
     \begin{center}
-      \begin{tabular}{lll}
-        Reference  &  Class   &  Description                                                      \\
+\hspace*{-3mm}      \begin{tabular}{llp{7cm}}
+       {\footnotesize Reference} &  {\small Class } &  {\small Description }                                                      \\
         \hline
         u          &  user    &  the owner of the file                                            \\
         g          &  group   &  users who are members of the file's group                        \\
-        o          &  others  &  users who are not hte owner of the file or members of the group  \\
+        o          &  others  &  users who are not the owner of the file or members of the group  \\
         a          &  all     &  all three of the above; is the same as \emph{ugo}                \\
       \end{tabular}
     \end{center}
 
     \begin{center}
-      \begin{tabular}{ll}
+      \begin{tabular}{lp{9cm}}
         Operator  &  Description                                                                   \\
         \hline
         +         &  adds the specified modes to the specified classes                             \\
@@ -792,7 +816,7 @@
   \end{itemize}
 \end{frame}
 
-\subsection{Features of the Shell}
+% \subsection{Features of the Shell}
 
 \begin{frame}[fragile]
   \frametitle{Tab-completion}
@@ -804,7 +828,7 @@
     \item File Names
     \item Directory Names
     \item Executable Names
-    \item User Names (when they are prefixed with a \~{})
+    \item User Names (when they are prefixed with a ``$\sim$'' (tilde) )
     \item Host Names (when they are prefixed with a @)
     \item Variable Names (when they are prefixed with a \$)
     \end{enumerate}
@@ -840,6 +864,8 @@
   \begin{itemize}
   \item Lists \texttt{file.ext} files, where \texttt{ext} is only one
     character 
+  \item See also the \texttt{file} command: no cheating \texttt{file}, though
+         tab completions can get cheated
   \end{itemize}
 \end{frame}
 
@@ -907,7 +933,7 @@
     | grep -i Anne
   \end{lstlisting} % $
   \begin{itemize}
-  \item \texttt{-v} inverts the search
+  \item \texttt{-v} \alert{inverts} the search
   \item To see everyone's marks except Anne's
   \end{itemize}
   \begin{lstlisting}
@@ -1024,6 +1050,8 @@
   \item Variables can be assigned with the output of commands
   \item \alert{NOTE:} There is no space around the \texttt{=} sign
   \item All text following the \texttt{\#} is considered a comment
+  \item Could also use \texttt{count = \$\{wc -l wonderland.txt\} }\\
+        (instead of the ``open quote'': \texttt{ ` } )
   \end{itemize}
 \end{frame}
 
@@ -1110,11 +1138,12 @@
   \begin{lstlisting}
     #!/bin/bash
     if test -d $1
-    then
-    echo "Yes, the directory" \
-    $1 "is present"
+        then
+        echo "Yes, the directory" \
+        $1 "is present"
     fi
   \end{lstlisting} % $
+(indent \alert{recommended} though not obligatory like in Python)
 \end{frame}
 
 \begin{frame}[fragile]
@@ -1216,7 +1245,7 @@
   \item A simple example of the \texttt{for} loop
   \end{itemize}
   \begin{lstlisting}
-    for animal in rat cat dog man
+    for animal in rat dog man tiger 
     do 
     echo $animal
     done
